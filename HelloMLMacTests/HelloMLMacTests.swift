@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import HelloMLMac
 
 class HelloMLMacTests: XCTestCase {
     
