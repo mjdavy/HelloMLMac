@@ -12,12 +12,17 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var imageCell: NSImageCell!
     
+    var rawImages : [[UInt8]]?
+    var columnCount : UInt32?
+    var rowCount : UInt32?
+    var imageCount : UInt32?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //let imageInfo = getImageInfoFromImage(image: NSImage(named: "MyImage")!)
-        
-        guard let imageInfo = GetImageInfoFromMnistImage(index: 1) else { return }
+        LoadMNistImages()
+        guard let imageInfo = GetImageInfoFromMnistImage(index: 10) else { return }
         let image = imageFromImageInfo(imageInfo: imageInfo)
         
         imageCell.image = image
@@ -46,19 +51,28 @@ class ViewController: NSViewController {
     private let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
     private let bitmapInfo:CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
     
+    private func LoadMNistImages()
+    {
+        guard let (ic, cc, rc, ri) = getRawTrainingImages() else { return }
+        self.imageCount = ic
+        self.columnCount = cc
+        self.rowCount = rc
+        self.rawImages = ri
+    }
     
     private func GetImageInfoFromMnistImage(index: Int) -> ImageInfo?
     {
-        guard let (imageCount, columnCount, rowCount, rawImages) = getRawTrainingImages(),
-              let image = rawImages?[index]
-              else { return nil }
+        guard let image = self.rawImages?[index] else { return nil }
+        
+        let rows = Int(self.rowCount!)
+        let cols = Int(self.columnCount!)
         
         let convertPixel: (UInt8) -> ImageInfo.PixelData = { pixel in
             return ImageInfo.PixelData(a: 255, r:pixel, g:pixel, b:pixel)
         }
         
         let pixels = image.map(convertPixel)
-        let imageInfo = ImageInfo(width: Int(columnCount), height: Int(rowCount), pixels: pixels)
+        let imageInfo = ImageInfo(width: cols, height: rows, pixels: pixels)
         
         return imageInfo
     
@@ -161,7 +175,6 @@ class ViewController: NSViewController {
         
         return ImageInfo(width: w, height: h, pixels: newPixels)
     }
-
 
 }
 
