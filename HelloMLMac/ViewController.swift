@@ -16,22 +16,26 @@ class ViewController: NSViewController {
     var columnCount : UInt32?
     var rowCount : UInt32?
     var imageCount : UInt32?
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //let imageInfo = getImageInfoFromImage(image: NSImage(named: "MyImage")!)
         LoadMNistImages()
-        guard let imageInfo = GetImageInfoFromMnistImage(index: 10) else { return }
-        let image = imageFromImageInfo(imageInfo: imageInfo)
-        
-        imageCell.image = image
     }
 
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    @IBAction func nextImageClicked(_ sender: Any) {
+        guard let imageInfo = GetImageInfoFromMnistImage(index: self.index) else { return }
+        let image = imageFromImageInfo(imageInfo: imageInfo)
+        imageCell.image = image
+        self.index += 1
     }
     
     public struct ImageInfo
