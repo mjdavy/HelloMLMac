@@ -22,12 +22,12 @@ public class Network {
         self.biases = [[Float]]()
         self.weights = [[[Float]]]()
         
-        for i in 1...self.layers-1 {
+        for i in 0..<self.layers-1 {
             self.biases.append([Float](repeating: 0.0, count: self.sizes[i]))
-            // var weightVals = [Float](repeating: 0.0, count: self.sizes[i] * self.sizes[i-1])
-            //self.weights.append(<#T##newElement: [[Float]]##[[Float]]#>)
-            for j in 0...self.sizes[i] {
+            self.weights.append([[Float]]())
+            for j in 0 ..< self.sizes[i] {
                 self.biases[i][j] = Float.random(in:0.0...1.0)
+                self.weights[i][j] = [Float]()
             }
         }
     }

@@ -18,13 +18,10 @@
 		40C80E7921876DAD00102C8E /* train-labels-idx1-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 40C80E7521876DAD00102C8E /* train-labels-idx1-ubyte */; };
 		40C80E7A21876DAD00102C8E /* train-images-idx3-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 40C80E7621876DAD00102C8E /* train-images-idx3-ubyte */; };
 		40F9BF3B2193778C00DE3549 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9BF3A2193778C00DE3549 /* Network.swift */; };
-		40F9BF3F2193A73600DE3549 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9BF3A2193778C00DE3549 /* Network.swift */; };
-		40F9BF442193AB0E00DE3549 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40504CDE2119EA860066E0A7 /* ViewController.swift */; };
-		40F9BF452193AB1200DE3549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40504CDC2119EA860066E0A7 /* AppDelegate.swift */; };
-		40F9BF462193AB1A00DE3549 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40504CE22119EA890066E0A7 /* Main.storyboard */; };
-		40F9BF472193AB2000DE3549 /* Mnist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C80E7121874E2700102C8E /* Mnist.swift */; };
 		40F9BF482193AB2900DE3549 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40504CE02119EA890066E0A7 /* Assets.xcassets */; };
 		40F9BF492193AB8E00DE3549 /* HelloMLMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40504CEF2119EA890066E0A7 /* HelloMLMacTests.swift */; };
+		40F9BF852193AD9000DE3549 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9BF3A2193778C00DE3549 /* Network.swift */; };
+		40F9BF862193ADDB00DE3549 /* Mnist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C80E7121874E2700102C8E /* Mnist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,7 +266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				40F9BF482193AB2900DE3549 /* Assets.xcassets in Resources */,
-				40F9BF462193AB1A00DE3549 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,11 +294,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40F9BF442193AB0E00DE3549 /* ViewController.swift in Sources */,
-				40F9BF472193AB2000DE3549 /* Mnist.swift in Sources */,
+				40F9BF862193ADDB00DE3549 /* Mnist.swift in Sources */,
+				40F9BF852193AD9000DE3549 /* Network.swift in Sources */,
 				40F9BF492193AB8E00DE3549 /* HelloMLMacTests.swift in Sources */,
-				40F9BF452193AB1200DE3549 /* AppDelegate.swift in Sources */,
-				40F9BF3F2193A73600DE3549 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

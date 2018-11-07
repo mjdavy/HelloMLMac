@@ -30,7 +30,7 @@ class HelloMLMacTests: XCTestCase {
         XCTAssert(true)
     }
     
-    func TestBiasDims() {
+    func testBiasDims() {
          let n = Network(sizes: [2,3,4])
          XCTAssert(n.layers == 3)
          XCTAssert(n.biases.count == 2)
