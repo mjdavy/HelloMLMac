@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import HelloMLMac
 
 class HelloMLMacTests: XCTestCase {
     
@@ -23,6 +24,17 @@ class HelloMLMacTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testAnotherExample() {
+        XCTAssert(true)
+    }
+    
+    func TestBiasDims() {
+         let n = Network(sizes: [2,3,4])
+         XCTAssert(n.layers == 3)
+         XCTAssert(n.biases.count == 2)
+         XCTAssert(n.weights.count == 2)
     }
     
     func testPerformanceExample() {
