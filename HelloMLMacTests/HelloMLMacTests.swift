@@ -54,9 +54,8 @@ class HelloMLMacTests: XCTestCase {
     }
     
     func testSigmoid() {
-        let n = Network(sizes: [0,0,0])
         for i in -10...10 {
-            let x = n.sigmoid(value: Double(i))
+            let x = Network.sigmoid(value: Double(i))
             XCTAssert(x >= 0.0)
             XCTAssert(x <= 1.0)
         }
