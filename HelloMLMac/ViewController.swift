@@ -23,7 +23,22 @@ class ViewController: NSViewController {
 
         //let imageInfo = getImageInfoFromImage(image: NSImage(named: "MyImage")!)
         LoadMNistImages()
-        guard let (trainData, trainLabels, testData, testLabels) = loadData() else { return }
+        guard let (trainData, trainLabels, testData, testLabels) = loadData(),
+            trainData[0].count == 784
+            else { return }
+        
+        var costs = [Double]()
+        let n = Network(sizes: [784, 16, 10])
+        
+        for i in (0...10) {
+            let v = n.feedForward(input: trainData[i], layer: 0)
+            let l = Network.oneHot(digit: trainLabels[i])
+            let c = Network.cost(actual: v, correct: l)
+            print(c)
+            costs.append(c)
+        }
+        
+        print(costs)
     }
 
     override var representedObject: Any? {
