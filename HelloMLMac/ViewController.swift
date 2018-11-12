@@ -23,6 +23,7 @@ class ViewController: NSViewController {
 
         //let imageInfo = getImageInfoFromImage(image: NSImage(named: "MyImage")!)
         LoadMNistImages()
+        guard let (trainData, trainLabels, testData, testLabels) = loadData() else { return }
     }
 
     override var representedObject: Any? {

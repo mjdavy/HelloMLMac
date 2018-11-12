@@ -55,17 +55,34 @@ public class Network {
         return Network.sigmoid(value: val)
     }
     
+    static func cost(actual: [Double], correct:[Double]) -> Double
+    {
+        assert(actual.count == correct.count)
+        let cost = zip(actual,correct).map {pow(($0.0 - $0.1),2)}.reduce(0,+)
+        return Double(cost)
+    }
+    
+    static func oneHot(digit: Int) -> [Double]
+    {
+        var result : [Double] = Array(repeating: 0.0, count: 10)
+        guard (0...9).contains(digit) else { return result }
+        result[digit] = 1.0
+        return result
+    }
+    
     func feedForward(input: [Double], layer: Int) -> [Double]
     {
-        if layer == layers {
+        if layer == layers - 1 {
             return input
         }
+        
+        assert(input.count == sizes[layer])
         
         let weights = self.weights[layer]
         let biases = self.biases[layer]
         var activation = [Double]()
         
-        for i in 0..<input.count
+        for i in 0..<weights.count
         {
             let value = Network.feedOne(input: input, weights: weights[i], bias: biases[i])
             activation.append(value)

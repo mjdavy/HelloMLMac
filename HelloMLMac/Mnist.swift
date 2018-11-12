@@ -26,7 +26,7 @@ func getRawTrainingImages() -> (UInt32, UInt32, UInt32, [[UInt8]]?)?
     return (imageCount, columnCount, rowCount, rawImages)
 }
 
-func loadData() -> ([[Float]], [Int], [[Float]], [Int])? {
+func loadData() -> ([[Double]], [Int], [[Double]], [Int])? {
     let mainBundle = Bundle.main
     guard
         let trainImagesPath = mainBundle.path(forResource: "train-images-idx3-ubyte", ofType: nil),
@@ -68,14 +68,14 @@ func rawImageData(data: NSData, imageCount: UInt32, columnCount: UInt32, rowCoun
     return range.map(extractImageClosure)
 }
 
-func imageData(data: NSData) -> [[Float]]? {
+func imageData(data: NSData) -> [[Double]]? {
     guard let (_, nItem, nCol, nRow) = readImageFileHeader(data: data) else { return nil }
     
     let imageLength = Int(nCol * nRow)
     let range = 0..<Int(nItem)
-    let extractImageClosure: (Int) -> [Float] = { itemIndex in
+    let extractImageClosure: (Int) -> [Double] = { itemIndex in
         return extractImage(data: data, pixelCount: imageLength, imageIndex: itemIndex)
-            .map({Float($0)/255})
+            .map({Double($0)/255})
     }
     
     return range.map(extractImageClosure)
